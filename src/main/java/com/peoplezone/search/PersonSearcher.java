@@ -25,6 +25,8 @@ public class PersonSearcher {
     /*
         Would be better taking a "Form"/Object with your search criteria.
      */
+    
+    //Called in controller searchSpecific under all case in switch attr
     public List<Person> search(String toSearch, Integer age, double toSearchDouble, long toSearchLong, char gender, Pageable pageable) {
 
         //Get "all"
