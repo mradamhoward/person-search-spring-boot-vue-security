@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
 @Repository
-public interface PersonRepo extends JpaRepository<Person, Long>, JpaSpecificationExecutor<Person>{
+public interface PersonRepo extends JpaRepository<Person, Long>, JpaSpecificationExecutor<Person> {
 	List<Person> searchByFirstNameContainingOrSurNameContainingAllIgnoreCase(String firstName, String surName);
 	
 	Person findByFirstName(String firstName);

@@ -33,5 +33,18 @@ public interface PersonService {
 	List<Person> searchForDriverLicence(String toSearch, int page, int quan);
 	List<Person> searchForProvisional(String toSearch, int page, int quan);
 	List<Person> searchForIBAN(String toSearch, int page, int quan);
+	List<Person> searchBySpecSurname(String search);
+	List<Person> searchBySpecFirstname(String search);
+	List<Person> searchBySpecAll(String search);
+	List<Person> searchBySpecAll(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForFirstName(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForSecondName(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForEmail(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForDesc(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForAge(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForPhone(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForHomeAddress(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForGender(String search, String page, String num, String sortBy, String ascending);
+	List<Person> searchForWebsite(String search, String page, String num, String sortBy, String ascending);
 	
 }

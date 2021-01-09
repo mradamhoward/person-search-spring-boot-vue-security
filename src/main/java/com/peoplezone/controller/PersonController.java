@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.peoplezone.models.Person;
-import com.peoplezone.search.PersonSearcher;
 import com.peoplezone.service.PersonService;
 
 import java.util.List;
@@ -23,21 +22,9 @@ public class PersonController {
 	
 	@Autowired
 	private PersonService personService;
-	
-	@Autowired
-    private PersonSearcher personSearcher;
-
 
 	
 	@GetMapping("/search")
-	public List<Person> searchAllAttributes(@RequestParam String toSearch) {
-		System.out.println(toSearch);
-		//List<Person> peopleResults = personService.searchByAllAttributes(toSearch);
-		
-		return null;
-	}
-	
-	@GetMapping("/searchSpecific")
 	public List<Person> searchSpecificAttribute(@RequestParam String toSearch, @RequestParam String attr,  @RequestParam String page,  @RequestParam String numResults,@RequestParam String sortBy,	@RequestParam String ascending) {
 		System.out.println("tosearch " + toSearch);
 		System.out.println("Attr " + attr);
@@ -100,26 +87,23 @@ public class PersonController {
 		}
 		
 		switch(attr) {
+			//Search and sort working for all attributes
 			case"all":{
-				//peopleResults = personService.searchByAllAttributes(toSearch,page1, num, sortBy, asc);
-				 
-				List<Person> pagep = personSearcher.search(toSearch, age, 
-						doublesearch, l, gender,
-		                PageRequest.of(page1,num, Sort.by(Sort.Direction.DESC,"firstName"))
-		        );
+				List<Person> pagep = personService.searchBySpecAll(toSearch, page, numResults, sortBy, ascending);
 				return pagep;
 			}
+			//Search and sort working for firstName
 			case "firstName":{
-				
-				peopleResults = personService.searchForFirstName(toSearch, page1, num);
+				peopleResults = personService.searchForFirstName(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
+			//Search and sort working for surName
 			case "surName":{
-				peopleResults = personService.searchForSecondName(toSearch,page1, num);
+				peopleResults = personService.searchForSecondName(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "age":{
-				peopleResults = personService.searchForAge(toSearch,page1, num);
+				peopleResults = personService.searchForAge(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "dob":{
@@ -127,27 +111,27 @@ public class PersonController {
 				return peopleResults;
 			}  
 			case "desc":{
-				peopleResults = personService.searchForDesc(toSearch,page1, num);
+				peopleResults = personService.searchForDesc(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "email":{
-				peopleResults = personService.searchForEmail(toSearch,page1, num);
+				peopleResults = personService.searchForEmail(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "website":{
-				peopleResults = personService.searchForWebsite(toSearch,page1, num);
+				peopleResults = personService.searchForWebsite(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "gender":{
-				peopleResults = personService.searchForGender(toSearch,page1, num);
+				peopleResults = personService.searchForGender(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "phone":{
-				peopleResults = personService.searchForPhone(toSearch,page1, num);
+				peopleResults = personService.searchForPhone(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "homeAddress":{
-				peopleResults = personService.searchForHomeAddress(toSearch,page1, num);
+				peopleResults = personService.searchForHomeAddress(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
 			case "edu":{
@@ -184,14 +168,6 @@ public class PersonController {
 			}  
 			case "pps":{
 				peopleResults = personService.searchForPPS(toSearch,page1, num);
-				return peopleResults;
-			}  
-			case "driver":{
-				peopleResults = personService.searchForDriverLicence(toSearch,page1, num);
-				return peopleResults;
-			}  
-			case "provisional":{
-				peopleResults = personService.searchForProvisional(toSearch,page1, num);
 				return peopleResults;
 			}  
 			case "iban":{
