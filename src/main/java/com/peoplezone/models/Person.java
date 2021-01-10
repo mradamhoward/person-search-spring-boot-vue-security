@@ -52,14 +52,10 @@ public class Person {
 	
 	private double height;
 	
-	private String PPSnumber;
-	
 	private boolean driversLicence;
 	
 	private boolean provisionalLicence;
-	
-	private String bankIBAN;
-	
+
 	private long phoneNumber;
 	
 	private char gender;
@@ -69,5 +65,7 @@ public class Person {
 	private String websiteAddress;
 	
 	private String homeAddress;
+	
+	private String image;
 	
 }

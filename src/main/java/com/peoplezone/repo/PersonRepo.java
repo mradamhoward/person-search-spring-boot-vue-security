@@ -19,7 +19,6 @@ public interface PersonRepo extends JpaRepository<Person, Long>, JpaSpecificatio
 	
 	Person findByFirstName(String firstName);
 	
-	List<Person> searchByFirstNameContainingOrSurNameContainingOrAgeOrDescriptionContainingOrHighestEducationQualificationContainingOrOccupationContainingOrEmployerContainingOrCollegeContainingOrSchoolContainingOrEyecolorOrWeightOrHeightOrPPSnumberOrDriversLicenceOrProvisionalLicenceOrBankIBANOrPhoneNumberOrGenderOrEmailAddressOrWebsiteAddressContainingOrHomeAddressContainingAllIgnoreCase(String firstName, String surName, int age, String desc, String edu,String occ, String emp, String college, String school, String eye, double weight, double height, String pps, boolean drivers, boolean provisional, String bank, long phone, char gender, String email, String website, String home, Pageable page);
 	
 	
 	List<Person> searchByFirstNameContainingAllIgnoreCase(String firstName, Pageable page);
@@ -34,10 +33,8 @@ public interface PersonRepo extends JpaRepository<Person, Long>, JpaSpecificatio
 	List<Person> searchByEyecolorContainingAllIgnoreCase(String eye, Pageable page);
 	List<Person> searchByWeight(double weight, Pageable page);
 	List<Person> searchByHeight(double height, Pageable page);
-	List<Person> searchByPPSnumberIgnoreCase(String emp, Pageable page);
 	List<Person> searchByDriversLicence(boolean emp, Pageable page);
 	List<Person> searchByProvisionalLicence(boolean emp, Pageable page);
-	List<Person> searchByBankIBANAllIgnoreCase(String emp, Pageable page);
 	List<Person> searchByPhoneNumber(long phone, Pageable page);
 	List<Person> searchByGender(char emp, Pageable page);
 	List<Person> searchByEmailAddressIgnoreCase(String emp, Pageable page);

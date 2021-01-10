@@ -15,8 +15,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class PersonController {
 	
@@ -25,12 +26,15 @@ public class PersonController {
 
 	
 	@GetMapping("/search")
+	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	public List<Person> searchSpecificAttribute(@RequestParam String toSearch, @RequestParam String attr,  @RequestParam String page,  @RequestParam String numResults,@RequestParam String sortBy,	@RequestParam String ascending) {
 		System.out.println("tosearch " + toSearch);
 		System.out.println("Attr " + attr);
 		System.out.println("Page " + page);
 		System.out.println("Sort by: " + sortBy);
 		System.out.println("Ascending: " + ascending); 
+		
+		attr = "all";
 		
 		int page1 = 0;
 		try {
@@ -106,10 +110,6 @@ public class PersonController {
 				peopleResults = personService.searchForAge(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
 			}  
-			case "dob":{
-				peopleResults = personService.searchForDOB(toSearch,page1, num);
-				return peopleResults;
-			}  
 			case "desc":{
 				peopleResults = personService.searchForDesc(toSearch, page, numResults, sortBy, ascending);
 				return peopleResults;
@@ -183,6 +183,18 @@ public class PersonController {
 	public List<Person> getAllPeople(){
 		List<Person> all = personService.getAllPeople();
 		return all;
+	}
+	
+	@GetMapping("/person")
+	public Person getPerson(@RequestParam long id){
+		Person p = null;
+		System.out.println(id);
+		try {
+			p = personService.getPerson(id);
+		} catch (Exception e) {
+				
+		}
+		return p;
 	}
 	
 }

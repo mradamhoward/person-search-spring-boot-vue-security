@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -72,10 +73,10 @@ public class PersonServiceImpl implements PersonService {
 			firstPageWithTwoElements = PageRequest.of(page, quan, Sort.by(sortBy).ascending());
 		}
 		
-		results = personRepo.searchByFirstNameContainingOrSurNameContainingOrAgeOrDescriptionContainingOrHighestEducationQualificationContainingOrOccupationContainingOrEmployerContainingOrCollegeContainingOrSchoolContainingOrEyecolorOrWeightOrHeightOrPPSnumberOrDriversLicenceOrProvisionalLicenceOrBankIBANOrPhoneNumberOrGenderOrEmailAddressOrWebsiteAddressContainingOrHomeAddressContainingAllIgnoreCase(toSearch, toSearch, ageToSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearchDouble, toSearchDouble, toSearch, false, false, toSearch, phoneToSearch, 'G',toSearch, toSearch, toSearch, firstPageWithTwoElements);
+		//results = personRepo.searchByFirstNameContainingOrSurNameContainingOrAgeOrDescriptionContainingOrHighestEducationQualificationContainingOrOccupationContainingOrEmployerContainingOrCollegeContainingOrSchoolContainingOrEyecolorOrWeightOrHeightOrPPSnumberOrDriversLicenceOrProvisionalLicenceOrBankIBANOrPhoneNumberOrGenderOrEmailAddressOrWebsiteAddressContainingOrHomeAddressContainingAllIgnoreCase(toSearch, toSearch, ageToSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearch, toSearchDouble, toSearchDouble, toSearch, false, false, toSearch, phoneToSearch, 'G',toSearch, toSearch, toSearch, firstPageWithTwoElements);
 		
 		
-		return results;
+		return null;
 		
 		
 	}
@@ -580,12 +581,7 @@ public class PersonServiceImpl implements PersonService {
 		return personRepo.searchByWeight(height,firstPageWithTwoElements);
 	}
 
-	@Override
-	public List<Person> searchForPPS(String toSearch, int page, int quan) {
-		// TODO Auto-generated method stub
-		Pageable firstPageWithTwoElements = PageRequest.of(page, quan);
-		return personRepo.searchByPPSnumberIgnoreCase(toSearch,firstPageWithTwoElements);
-	}
+	
 
 	@Override
 	public List<Person> searchForDriverLicence(String toSearch, int page, int quan) {
@@ -605,12 +601,7 @@ public class PersonServiceImpl implements PersonService {
 		return personRepo.searchByDriversLicence(driver, firstPageWithTwoElements);
 	}
 
-	@Override
-	public List<Person> searchForIBAN(String toSearch, int page, int quan) {
-		// TODO Auto-generated method stub
-		Pageable firstPageWithTwoElements = PageRequest.of(page, quan);
-		return personRepo.searchByBankIBANAllIgnoreCase(toSearch,firstPageWithTwoElements);
-	}
+
 	
 	public List<Person> searchBySpecSurname(String search){
 		 PersonSpecification spec = new PersonSpecification(new SearchCriteria("surName", ":", search));
@@ -662,23 +653,23 @@ public class PersonServiceImpl implements PersonService {
 		 PersonSpecification spec = new PersonSpecification(new SearchCriteria("firstName", ":", search));
 		 PersonSpecification spec2 = new PersonSpecification(new SearchCriteria("surName", ":", search));
 		 PersonSpecification spec3 = new PersonSpecification(new SearchCriteria("age", ":", age));
-		 PersonSpecification spec4 = new PersonSpecification(new SearchCriteria("description", ":", search));
-		 PersonSpecification spec5 = new PersonSpecification(new SearchCriteria("highestEducationQualification", "=", search));
+		 //PersonSpecification spec4 = new PersonSpecification(new SearchCriteria("description", ":", search));
+		 //PersonSpecification spec5 = new PersonSpecification(new SearchCriteria("highestEducationQualification", "=", search));
 		 PersonSpecification spec6 = new PersonSpecification(new SearchCriteria("occupation", ":", search));
 		 PersonSpecification spec7 = new PersonSpecification(new SearchCriteria("employer", ":", search));
 		 PersonSpecification spec8 = new PersonSpecification(new SearchCriteria("college", ":", search));
 		 PersonSpecification spec9 = new PersonSpecification(new SearchCriteria("school", ":", search));
-		 PersonSpecification spec10 = new PersonSpecification(new SearchCriteria("eyecolor", "=", search));
+		 //PersonSpecification spec10 = new PersonSpecification(new SearchCriteria("eyecolor", "=", search));
 		 PersonSpecification spec11 = new PersonSpecification(new SearchCriteria("weight", "=", d));
 		 PersonSpecification spec12 = new PersonSpecification(new SearchCriteria("height", "=", d));
-		 PersonSpecification spec13 = new PersonSpecification(new SearchCriteria("PPSnumber", "=", search));
-		 PersonSpecification spec16 = new PersonSpecification(new SearchCriteria("bankIBAN", "=", search));
-		 PersonSpecification spec17 = new PersonSpecification(new SearchCriteria("phoneNumber", "=", search));
-		 PersonSpecification spec18 = new PersonSpecification(new SearchCriteria("gender", "=", search));
+		 //PersonSpecification spec13 = new PersonSpecification(new SearchCriteria("PPSnumber", "=", search));
+		 //PersonSpecification spec16 = new PersonSpecification(new SearchCriteria("bankIBAN", "=", search));
+		 //PersonSpecification spec17 = new PersonSpecification(new SearchCriteria("phoneNumber", "=", d));
+		 //PersonSpecification spec18 = new PersonSpecification(new SearchCriteria("gender", "=", search));
 		 PersonSpecification spec19 = new PersonSpecification(new SearchCriteria("emailAddress", "=", search));
-		 PersonSpecification spec20 = new PersonSpecification(new SearchCriteria("websiteAddress", ":", search));
+		 //PersonSpecification spec20 = new PersonSpecification(new SearchCriteria("websiteAddress", ":", search));
 		 PersonSpecification spec21 = new PersonSpecification(new SearchCriteria("homeAddress", ":", search));
-		 PersonSpecification spec22 = new PersonSpecification(new SearchCriteria("PPSnumber", ":", search));
+		 //PersonSpecification spec22 = new PersonSpecification(new SearchCriteria("PPSnumber", ":", search));
 		 
 		 Pageable firstPageWithFourElements = PageRequest.of(pageNum, numResults, Sort.by(Sort.Direction.DESC, sortBy));;
 	
@@ -687,7 +678,7 @@ public class PersonServiceImpl implements PersonService {
 			 firstPageWithFourElements = PageRequest.of(pageNum, numResults, Sort.by(Sort.Direction.ASC, sortBy));
 		 } 
 		 
-		 Page<Person> results = personRepo.findAll(Specification.where(spec).or(spec2).or(spec3).or(spec4).or(spec4).or(spec5).or(spec6).or(spec7).or(spec8).or(spec9).or(spec10).or(spec11).or(spec12).or(spec13).or(spec16).or(spec17).or(spec18).or(spec19).or(spec20).or(spec21).or(spec22), firstPageWithFourElements);
+		 Page<Person> results = personRepo.findAll(Specification.where(spec).or(spec2).or(spec3).or(spec6).or(spec7).or(spec8).or(spec9).or(spec11).or(spec12).or(spec19).or(spec21), firstPageWithFourElements);
 		 List<Person> res = results.getContent();
 		 
 		 return res;
@@ -757,6 +748,24 @@ public class PersonServiceImpl implements PersonService {
 	public List<Person> searchForHomeAddress(String toSearch, int page, int quan) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Person> searchForPPS(String toSearch, int page, int quan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Person> searchForIBAN(String toSearch, int page, int quan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Person getPerson(long id) {
+		Optional<Person> p = personRepo.findById(id);
+		return p.get();
 	}
 	 
 	

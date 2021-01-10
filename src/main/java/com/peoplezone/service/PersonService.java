@@ -46,5 +46,5 @@ public interface PersonService {
 	List<Person> searchForHomeAddress(String search, String page, String num, String sortBy, String ascending);
 	List<Person> searchForGender(String search, String page, String num, String sortBy, String ascending);
 	List<Person> searchForWebsite(String search, String page, String num, String sortBy, String ascending);
-	
+	Person getPerson(long id);
 }
