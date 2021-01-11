@@ -1,5 +1,6 @@
 package com.peoplezone.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
@@ -32,7 +34,7 @@ public class Person {
 	
 	private int age;
 	
-	private Date DOB;
+    private Date dob;
 	
 	private String description;
 	

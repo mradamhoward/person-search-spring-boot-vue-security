@@ -1,5 +1,6 @@
 package com.peoplezone.config;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Optional;
@@ -39,8 +40,6 @@ public class AppConfig  implements ApplicationListener<ContextRefreshedEvent> {
 			person.setFirstName(firstName);
 			person.setSurName(lastName);
 			person.setAge(age);
-			Date dob = new Date();
-			person.setDOB(dob);
 			person.setDescription(desc);
 			person.setHighestEducationQualification(edu);
 			person.setOccupation(occupation);
