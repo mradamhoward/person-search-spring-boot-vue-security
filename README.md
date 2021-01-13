@@ -16,7 +16,7 @@ run as spring boot app
 Working implementation of this tutorial
 ### https://bezkoder.com/spring-boot-vue-js-authentication-jwt-spring-security/
 
-My implemenation of the app, in spring, backend:
+My implemenation of the app, in vue, backend:
 
 ### https://github.com/mupml/PeopleZone-Spring-Security-Spring-Boot-Vue.js
 
