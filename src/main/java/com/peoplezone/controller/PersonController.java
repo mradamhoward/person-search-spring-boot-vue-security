@@ -53,6 +53,7 @@ public class PersonController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return pagep;
 	}
 	
@@ -92,6 +93,17 @@ public class PersonController {
 				
 		}
 	}
+	
+	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+	@GetMapping("/exportPerson")
+	public String exportPerson(long id) {
+		String location;
+		
+		location = personService.createPDF(id);
+		
+		return location;
+	}
+	
 	@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
 	@PostMapping("/createPerson")
 	public void createPerson(@RequestBody Person p){

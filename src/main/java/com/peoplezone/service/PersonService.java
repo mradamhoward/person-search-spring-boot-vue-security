@@ -14,4 +14,5 @@ public interface PersonService {
 	void updatePerson(long id, Person newPerson);
 	void deletePerson(long id);
 	void createPerson(Person p);
+	String createPDF(long id);
 }
