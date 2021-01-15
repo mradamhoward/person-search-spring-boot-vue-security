@@ -3,15 +3,23 @@ package com.peoplezone.config;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.Validator;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 
 import com.peoplezone.*;
 import com.peoplezone.models.ERole;
@@ -155,4 +163,6 @@ public class AppConfig  implements ApplicationListener<ContextRefreshedEvent> {
 		
 		
 	}
+	
+	
 }
