@@ -8,11 +8,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.peoplezone.service.FilesStorageService;
 
+
+@SpringBootApplication(scanBasePackages = "com.peoplezone")
 @EnableJpaRepositories()
-@SpringBootApplication
+@EnableTransactionManagement
 public class PeopleZoneApplication extends SpringBootServletInitializer implements CommandLineRunner{
 	@Resource
 	FilesStorageService storageService;
@@ -32,5 +35,7 @@ public class PeopleZoneApplication extends SpringBootServletInitializer implemen
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(PeopleZoneApplication.class);
 	}
+	
+	
 
 }
